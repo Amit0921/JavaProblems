@@ -1,5 +1,6 @@
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class JavaStreams {
     public static void main(String[] args) {
@@ -16,13 +17,16 @@ public class JavaStreams {
 
 //      flatMap - Flattens nested structures (e.g. list of lists).
         List<List<Integer>> data = Arrays.asList(
-                Arrays.asList(1, 2),
+                Arrays.asList(1, 2);
                 Arrays.asList(3, 4),
                 Arrays.asList(6, 3),
                 Arrays.asList(3, 9)
         );
         List<Integer> list = data.stream().flatMap(List::stream).toList();
         System.out.println(list);
+
+        String text = "My name is Amit";
+        String resText = Stream.of(text).map(String::toUpperCase);
 
 
     }
