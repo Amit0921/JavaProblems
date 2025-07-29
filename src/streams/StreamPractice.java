@@ -16,6 +16,7 @@ public class StreamPractice {
         groupStringByLength(str);
         findDuplicate(numbs);
         sumOfSquares(numbs);
+        findSecondHighestNum(numbs);
 
         List<Employee> emp = new ArrayList<>();
         emp.add(new Employee(1,"Bob",20000));
@@ -27,6 +28,7 @@ public class StreamPractice {
         sortEmpBySalary(emp);
 
     }
+
     static void filterEvens(List<Integer> numbs){
         List<Integer> numbsRes = numbs.stream().filter(n -> n%2==0).toList();
         System.out.println("Even numbs: " + numbsRes);
@@ -71,6 +73,11 @@ public class StreamPractice {
                         .reversed()).toList();
         System.out.println(sortedEmp);
     }
+    static void findSecondHighestNum(List<Integer> numbs) {
+        Optional<Integer> secondMax = numbs.stream().distinct()
+                .sorted(Comparator.reverseOrder()).skip(1).findFirst();
+        System.out.println(secondMax);
+    }
 
 }
 
@@ -85,29 +92,14 @@ class Employee{
         this.salary = salary;
     }
 
-
     public int getId() {
         return id;
     }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
     }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public int getSalary() {
         return salary;
-    }
-
-    public void setSalary(int salary) {
-        this.salary = salary;
     }
 
     @Override
