@@ -66,10 +66,10 @@ public class StreamPractice {
         System.out.println("Sum of squares: " + res);
     }
     static void sortEmpBySalary(List<Employee> emp){
-        System.out.println(emp.get(0));
-        for(Employee e : emp){
-            System.out.println(e.salary);
-        }
+        List<Employee> sortedEmp = emp.stream()
+                        .sorted(Comparator.comparing(Employee::getSalary)
+                        .reversed()).toList();
+        System.out.println(sortedEmp);
     }
 
 }
@@ -83,5 +83,39 @@ class Employee{
         this.id = id;
         this.name = name;
         this.salary = salary;
+    }
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getSalary() {
+        return salary;
+    }
+
+    public void setSalary(int salary) {
+        this.salary = salary;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", salary=" + salary +
+                '}';
     }
 }
