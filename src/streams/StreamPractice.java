@@ -66,7 +66,10 @@ public class StreamPractice {
         System.out.println("Sum of squares: " + res);
     }
     static void sortEmpBySalary(List<Employee> emp){
-
+        System.out.println(emp.get(0));
+        for(Employee e : emp){
+            System.out.println(e.salary);
+        }
     }
 
 }
