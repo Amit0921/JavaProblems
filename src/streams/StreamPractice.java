@@ -7,6 +7,7 @@ public class StreamPractice {
     public static void main(String[] args) {
         List<Integer> numbs = Arrays.asList(1,9,2,3,4,5,6,2,6,7,8,9,5);
         List<String> str = Arrays.asList("dog","cat","africa","cow","bull","fox","ant");
+        List<List<Integer>> nestedList = List.of(List.of(1,2,4),List.of(0,9,6),List.of(1,2,5),List.of(6,2,3));
         filterEvens(numbs);
         toUpperCase(str);
         countStartsWithA(str);
@@ -17,6 +18,7 @@ public class StreamPractice {
         findDuplicate(numbs);
         sumOfSquares(numbs);
         findSecondHighestNum(numbs);
+        flattenNestedList(nestedList);
 
         List<Employee> emp = new ArrayList<>();
         emp.add(new Employee(1,"Bob",20000,"IT"));
@@ -104,6 +106,11 @@ public class StreamPractice {
         Map<String, Optional<Employee>> highSalEmpByDept = emp.stream()
                 .collect(Collectors.groupingBy(e -> e.dept, Collectors.maxBy(Comparator.comparingInt(e -> e.salary))));
         System.out.println(highSalEmpByDept);
+    }
+    static void flattenNestedList(List<List<Integer>> nestedList){
+        List<Integer> flattenList = nestedList.stream().flatMap(List::stream)
+                .toList();
+        System.out.println(flattenList);
     }
 
 }
