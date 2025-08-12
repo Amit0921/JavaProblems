@@ -7,6 +7,7 @@ public class StreamPractice {
     public static void main(String[] args) {
         List<Integer> numbs = Arrays.asList(1,9,2,3,4,5,6,2,6,7,8,9,5);
         List<String> str = Arrays.asList("dog","cat","africa","cow","bull","fox","ant");
+        List<String> nestedStr = List.of("Java is great","Streams are powerful");
         List<List<Integer>> nestedList = List.of(List.of(1,2,4),List.of(0,9,6),List.of(1,2,5),List.of(6,2,3));
         filterEvens(numbs);
         toUpperCase(str);
@@ -19,6 +20,7 @@ public class StreamPractice {
         sumOfSquares(numbs);
         findSecondHighestNum(numbs);
         flattenNestedList(nestedList);
+        flatMapOnString(nestedStr);
 
         List<Employee> emp = new ArrayList<>();
         emp.add(new Employee(1,"Bob",20000,"IT"));
@@ -111,6 +113,10 @@ public class StreamPractice {
         List<Integer> flattenList = nestedList.stream().flatMap(List::stream)
                 .toList();
         System.out.println(flattenList);
+    }
+    static void flatMapOnString(List<String> str){
+        List<String> res = str.stream().flatMap(s -> Arrays.stream(s.split(" "))).toList();
+        System.out.println(res);
     }
 
 }
